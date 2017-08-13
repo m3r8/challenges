@@ -21,6 +21,14 @@ def decodeelf(file):
                                     for i in range((bytarr[it+1] - 28)):
 						bytarr2.append(bytarr[it - 1])
 				it += 3
+			 elif chr(bytarr[it-1]) == "}":
+                            if bytarr[it] != 0x5D:
+                                it += 1
+                                continue
+                            else:
+                                bytarr2.append(bytarr[it - 1])
+                                it += 2
+                                continue
 			else:
 				bytarr2.append(bytarr[it - 1])
 				it += 1
