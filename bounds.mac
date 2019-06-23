@@ -1,0 +1,37 @@
+/*lowe_bound gives the position of the first item back that is >= val*/
+lower_bound(func,var,val,start,end,[L]):=
+block([akt,right,left,mid,dbg],
+left: start,
+right: end,
+dbg: length(L),
+display(dbg),
+while left < right do (
+mid: floor((left+right)/2),
+akt: subst(mid,x,func),
+if dbg = 1 then display(akt),
+if akt >= val then
+right: mid
+else
+left: mid+1
+),
+return(left)
+);
+/*upper_bound gives the position of the first item back that is > val*/
+upper_bound(func,var,val,start,end,[L]):=
+block([akt,right,left,mid,dbg],
+left: start,
+right: end,
+dbg: length(L),
+display(dbg),
+while left < right do (
+mid: floor((left+right)/2),
+akt: subst(mid,x,func),
+if dbg = 1 then display(akt),
+if akt > val then
+right: mid
+else
+left: mid+1
+),
+return(left)
+);
+
