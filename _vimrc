@@ -3,6 +3,7 @@ source $VIMRUNTIME/mswin.vim
 behave mswin
 
 syntax on
+set expandtab
 set noeb vb t_vb=
 set cindent
 set guifont=Consolas:h12:cEASTEUROPE
@@ -36,6 +37,7 @@ inoremap {{{ {
 noremap <C-S-Right> :tabnext<CR>
 noremap <C-S-Left> :tabprevious<CR>
 noremap <C-S-Up> :tabnew<CR>
+nnoremap <F8> :TagbarToggle<CR>
 set showcmd	
 set showmatch		
 set ignorecase	
@@ -80,4 +82,8 @@ function MyDiff()
     let &shellxquote=l:shxq_sav
   endif
 endfunction
+nnoremap <C-n> :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+execute pathogen#infect()
+filetype plugin indent on
 
